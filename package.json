@@ -1,12 +1,13 @@
 {
   "private": true,
+  "version": "0.0.1",
   "workspaces": [
     "packages/*"
   ],
   "description": "A datepicker library for the web.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tomgreenwood1/react-datepicker.git"
+    "url": "git+https://github.com/MrsLecter/react-datepicker-modern"
   },
   "keywords": [
     "react",
@@ -41,9 +42,9 @@
   "author": "Miha Sedej",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tomgreenwood1/react-datepicker/issues"
+    "url": "https://github.com/MrsLecter/react-datepicker-modern/issues"
   },
-  "homepage": "https://github.com/tomgreenwood1/react-datepicker#readme",
+  "homepage": "https://github.com/MrsLecter/react-datepicker-modern#readme",
   "devDependencies": {
     "@babel/core": "^7.10.2",
     "@babel/preset-env": "^7.10.2",
@@ -134,5 +135,5 @@
   "resolutions": {
     "@types/react": "^16.9.38"
   },
-  "name": "react-datepicker"
+  "name": "@MrsLecter/react-datepicker-modern"
 }
