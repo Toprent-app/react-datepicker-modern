@@ -65,6 +65,8 @@ interface InputLabelProps
   $isFocused?: boolean
   $hasError?: boolean
   $rtl?: boolean
+  $isActive?: boolean
+  $activeBoxShadow?: string
 }
 
 const composeInputLabelStyles = compose(position, border, background, display, borderRadius, space)
@@ -85,6 +87,7 @@ const InputLabel = styled('label')<InputLabelProps>`
   flex-direction: ${({$rtl}) => ($rtl ? 'row-reverse' : 'row')};
   border-radius: 14px;
   border: 1px solid ${getBorderColor};
+  box-shadow: ${({$isActive, $activeBoxShadow}) => ($isActive ? $activeBoxShadow : 'none')};
 
   &:hover {
     border-color: ${globalStyles.modern.colors.inputBorderFocused};
@@ -144,7 +147,6 @@ const composeStyledInputStyle = compose(
 const StyledInput = styled('input')<StyledInputProps>`
   ${composeStyledInputStyle}
   flex: 1;
-  min-height: 60px;
   cursor: pointer;
   box-sizing: border-box;
   outline: 0;
@@ -313,6 +315,8 @@ function Input({
       $isFocused={isFocused}
       $hasError={hasError}
       $rtl={rtl}
+      $isActive={isActive}
+      $activeBoxShadow={theme.inputActiveBoxShadow as string}
     >
       {label && (
         <Label color={theme.inputLabelColor as string} $rtl={rtl}>
@@ -334,7 +338,6 @@ function Input({
         fontWeight={theme.inputFontWeight}
         placeholderColor={theme.inputPlaceholderColor}
         placeholderFontWeight={theme.inputPlaceholderFontWeight}
-        boxShadow={isActive ? theme.inputActiveBoxShadow : 'none'}
         id={id}
         placeholder={placeholder}
         aria-label={ariaLabel}
