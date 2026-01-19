@@ -64,6 +64,7 @@ interface InputLabelProps
     BorderRadiusProps {
   $isFocused?: boolean
   $hasError?: boolean
+  $rtl?: boolean
 }
 
 const composeInputLabelStyles = compose(position, border, background, display, borderRadius, space)
@@ -81,6 +82,7 @@ const InputLabel = styled('label')<InputLabelProps>`
   height: 60px;
   display: flex;
   align-items: center;
+  flex-direction: ${({$rtl}) => ($rtl ? 'row-reverse' : 'row')};
   border-radius: 14px;
   border: 1px solid ${getBorderColor};
 
@@ -95,12 +97,14 @@ interface CalendarWrapperProps
     RightProps,
     TopProps,
     HeightProps,
-    WidthProps {}
+    WidthProps {
+  $rtl?: boolean
+}
 
 const CalendarWrapper = styled('div')<CalendarWrapperProps>`
   position: absolute;
   top: 50%;
-  right: 20px;
+  ${({$rtl}) => ($rtl ? 'left: 20px;' : 'right: 20px;')}
   transform: translateY(-50%);
   cursor: pointer;
 
@@ -119,7 +123,9 @@ interface StyledInputProps
     WidthProps,
     MinHeightProps,
     BoxShadowProps,
-    FontSizeProps {}
+    FontSizeProps {
+  $rtl?: boolean
+}
 
 const composeStyledInputStyle = compose(
   background,
@@ -142,8 +148,12 @@ const StyledInput = styled('input')<StyledInputProps>`
   cursor: pointer;
   box-sizing: border-box;
   outline: 0;
-  border-top-right-radius: 14px;
-  border-bottom-right-radius: 14px;
+  border-top-left-radius: ${({$rtl}) => ($rtl ? '14px' : '0')};
+  border-bottom-left-radius: ${({$rtl}) => ($rtl ? '14px' : '0')};
+  border-top-right-radius: ${({$rtl}) => ($rtl ? '0' : '14px')};
+  border-bottom-right-radius: ${({$rtl}) => ($rtl ? '0' : '14px')};
+  padding-right: ${({$rtl}) => ($rtl ? '0' : '60px')};
+  text-align: ${({$rtl}) => ($rtl ? 'right' : 'left')};
 
   ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
@@ -162,18 +172,22 @@ const StyledInput = styled('input')<StyledInputProps>`
   }
 `
 
-interface LabelProps extends ColorProps, FontSizeProps, FontWeightProps {}
+interface LabelProps extends ColorProps, FontSizeProps, FontWeightProps {
+  $rtl?: boolean
+}
 
 const composeLabelStyles = compose(color, fontSize, fontWeight)
 
 const Label = styled('span')<LabelProps>`
   ${composeLabelStyles}
   flex-shrink: 0;
-  padding-left: 16px;
+  padding-left: ${({$rtl}) => ($rtl ? '0' : '16px')};
+  padding-right: ${({$rtl}) => ($rtl ? '16px' : '0')};
   margin-right: 10px;
   margin-left: 10px;
   font-size: 14px;
   font-family: ${globalStyles.modern.fontFamily};
+  text-align: ${({$rtl}) => ($rtl ? 'right' : 'left')};
 `
 
 interface InputProps {
@@ -298,9 +312,13 @@ function Input({
       m={theme.inputLabelMargin}
       $isFocused={isFocused}
       $hasError={hasError}
+      $rtl={rtl}
     >
-      {/* @ts-ignore */}
-      {label && <Label color={theme.inputLabelColor}>{label}</Label>}
+      {label && (
+        <Label color={theme.inputLabelColor as string} $rtl={rtl}>
+          {label}
+        </Label>
+      )}
       <StyledInput
         tabIndex={disableAccessibility ? -1 : 0}
         border={theme.inputBorder}
@@ -329,6 +347,7 @@ function Input({
         }}
         onBlur={() => setIsFocused(false)}
         data-testid="DatepickerInputModern"
+        $rtl={rtl}
       />
       {showCalendarIcon && (
         <CalendarWrapper
@@ -338,6 +357,7 @@ function Input({
           top={theme.inputCalendarWrapperTop}
           left={theme.inputCalendarWrapperLeft}
           right={theme.inputCalendarWrapperRight}
+          $rtl={rtl}
         >
           <CalendarIconSimple
             // @ts-ignore
