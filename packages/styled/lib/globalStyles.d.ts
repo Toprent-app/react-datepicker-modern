@@ -15,5 +15,18 @@ declare const _default: {
     normalDayHover: string
   }
   daySize: number
+  /**
+   * Modern theme
+   */
+  modern: {
+    fontFamily: string
+    colors: {
+      inputLabel: string
+      inputPlaceholder: string
+      inputBorder: string
+      inputBorderFocused: string
+      inputBorderError: string
+    }
+  }
 }
 export default _default
