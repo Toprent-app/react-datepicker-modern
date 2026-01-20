@@ -159,8 +159,8 @@ function DateRangeInputModern({
     dateRangeArrowIconHeight: '12px',
     dateRangeArrowIconColor: getThemeProp('graci', globalStyles.colors.graci, themeContext),
     dateRangeArrowIconOpacity: 1,
-    dateRangeStartDateInputPadding: vertical ? (rtl ? '0 32px 0 8px' : '0 8px 0 32px') : '0 44px',
-    dateRangeEndDateInputPadding: vertical ? (rtl ? '0 32px 0 8px' : '0 8px 0 32px') : '0 44px',
+    dateRangeStartDateInputPadding: vertical ? (rtl ? '0 32px 0 8px' : '0 8px 0 32px') : '0 0x',
+    dateRangeEndDateInputPadding: vertical ? (rtl ? '0 32px 0 8px' : '0 8px 0 32px') : '0 0px',
     dateRangeDatepickerWrapperPosition: 'absolute',
     ...getPlacement(placement, rtl),
   })
