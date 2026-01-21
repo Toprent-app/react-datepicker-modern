@@ -15,4 +15,17 @@ export default {
     normalDayHover: '#e6e7e8',
   },
   daySize: 36,
+  /**
+   * Modern theme
+   */
+  modern: {
+    fontFamily: 'Inter, sans-serif',
+    colors: {
+      inputLabel: 'rgba(39, 39, 39, 0.4)',
+      inputPlaceholder: '#272727',
+      inputBorder: 'rgba(39, 39, 39, 0.12)',
+      inputBorderFocused: '#ffde00',
+      inputBorderError: '#ff0000',
+    },
+  },
 }

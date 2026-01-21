@@ -142,6 +142,7 @@ export interface InputTheme extends CommonTheme {
   inputCalendarIconWidth?: string
   inputCalendarIconHeight?: string
   inputCalendarIconColor?: string
+  inputLabelColor?: ResponsiveValue<ColorProperty>
 }
 
 export interface DatepickerTheme extends CommonTheme {
