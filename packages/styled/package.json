@@ -32,7 +32,7 @@
     "prebuild": "../../node_modules/.bin/rimraf lib"
   },
   "bugs": {
-    "url": "https://github.com/tresko/react-datepicker/issues"
+    "url": "https://github.com/Toprent-app/react-datepicker-modern/issues"
   },
   "peerDependencies": {
     "react": ">= 16.8.5",

@@ -8,6 +8,7 @@ import {
   MonthType,
 } from '@datepicker-react/hooks'
 import DateRangeInput from './components/DateRangeInput'
+import DateRangeInputModern from './components/DateRangeInputModern'
 import DateSingleInput, {OnDateChangeProps} from './components/DateSingleInput'
 import Datepicker from './components/Datepicker'
 import {
@@ -20,6 +21,7 @@ import {
 } from './phrases'
 export {
   DateRangeInput,
+  DateRangeInputModern,
   DateSingleInput,
   FirstDayOfWeek,
   Datepicker,
