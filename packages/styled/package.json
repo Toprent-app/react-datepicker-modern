@@ -1,6 +1,6 @@
 {
   "name": "@power-rent/react-datepicker-modern",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A React datepicker build with styled-components.",
   "keywords": [
     "datepicker",
