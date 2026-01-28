@@ -41,6 +41,8 @@ interface AppProps {
   onDayRender?(date: Date): React.ReactNode
   unavailableDates?: Date[]
   initialVisibleMonth?: Date
+  datepickerPadding?: string | null
+  datepickerCloseWrapperRight?: string | null
 }
 
 function App({
@@ -64,6 +66,8 @@ function App({
   monthLabelFormat = monthLabelFormatFn,
   onDayRender = undefined,
   unavailableDates = [],
+  datepickerPadding = null,
+  datepickerCloseWrapperRight = null,
 }: AppProps) {
   const [state, setState] = useState<OnDatesChangeProps>({
     startDate: null,
@@ -107,6 +111,8 @@ function App({
       onDayRender={onDayRender}
       unavailableDates={unavailableDates}
       initialVisibleMonth={initialVisibleMonth}
+      datepickerPadding={datepickerPadding}
+      datepickerCloseWrapperRight={datepickerCloseWrapperRight}
     />
   )
 }
@@ -121,6 +127,8 @@ storiesOf('Datepicker', module)
       showClose={boolean('showClose', true)}
       showSelectedDates={boolean('showSelectedDates', true)}
       displayFormat={text('displayFormat', 'MM/dd/yyyy')}
+      datepickerPadding={text('datepickerPadding', '10px')}
+      datepickerCloseWrapperRight={text('datepickerCloseWrapperRight', '10px')}
     />
   ))
   .add('Initial visible month', () => (

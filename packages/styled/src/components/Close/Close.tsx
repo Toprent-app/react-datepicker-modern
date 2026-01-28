@@ -83,16 +83,18 @@ function Close({onClick, rtl, closeText}: CloseProps) {
       aria-label="Close"
     >
       <CloseIcon width="15px" height="16px" color="#ADADAD" />
-      <Text
-        m={theme.closeMargin}
-        // @ts-ignore
-        color={theme.closeColor}
-        fontSize={theme.closeFontSize}
-        fontFamily={theme.fontFamily}
-        fontWeight={theme.closeFontWeight}
-      >
-        {closeText}
-      </Text>
+      {closeText && (
+        <Text
+          m={theme.closeMargin}
+          // @ts-ignore
+          color={theme.closeColor}
+          fontSize={theme.closeFontSize}
+          fontFamily={theme.fontFamily}
+          fontWeight={theme.closeFontWeight}
+        >
+          {closeText}
+        </Text>
+      )}
     </Wrapper>
   )
 }

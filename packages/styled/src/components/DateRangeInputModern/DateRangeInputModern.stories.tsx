@@ -53,6 +53,8 @@ interface AppProps {
   onDayRender?(date: Date): React.ReactNode
   unavailableDates?: Date[]
   initialVisibleMonth?: Date
+  datepickerCloseWrapperRightCustom?: string | null
+  datepickerPaddingCustom?: string | null
 }
 
 function App({
@@ -76,6 +78,8 @@ function App({
   monthLabelFormat = monthLabelFormatFn,
   onDayRender = undefined,
   unavailableDates = [],
+  datepickerCloseWrapperRightCustom = null,
+  datepickerPaddingCustom = null,
 }: AppProps) {
   const [state, dispatch] = useReducer(reducer, initialState)
 
@@ -111,6 +115,8 @@ function App({
       onDayRender={onDayRender}
       unavailableDates={unavailableDates}
       initialVisibleMonth={initialVisibleMonth}
+      datepickerCloseWrapperRightCustom={datepickerCloseWrapperRightCustom}
+      datepickerPaddingCustom={datepickerPaddingCustom}
     />
   )
 }
@@ -124,5 +130,7 @@ storiesOf('DateRangeInputModern', module).add('Simple demo', () => (
     showClose={boolean('showClose', true)}
     showSelectedDates={boolean('showSelectedDates', true)}
     displayFormat={text('displayFormat', 'MM/dd/yyyy')}
+    datepickerCloseWrapperRightCustom={text('datepickerCloseWrapperRightCustom', '10px')}
+    datepickerPaddingCustom={text('datepickerPaddingCustom', '10px')}
   />
 ))

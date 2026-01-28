@@ -153,7 +153,8 @@ export interface DatepickerProps extends UseDatepickerProps {
   datepickerHeight?: string
   datepickerLeft?: string
   datepickerTop?: string
-  datepickerZIndex?: number | null
+  datepickerPadding?: string | null
+  datepickerCloseWrapperRight?: string | null
 }
 
 function Datepicker(
@@ -189,7 +190,8 @@ function Datepicker(
     datepickerHeight = 'unset',
     datepickerLeft = '0px',
     datepickerTop = '0px',
-    datepickerZIndex = null,
+    datepickerPadding = null,
+    datepickerCloseWrapperRight = null,
   }: DatepickerProps,
   ref?: React.Ref<unknown>,
 ) {
@@ -311,13 +313,13 @@ function Datepicker(
       >
         <StyledDatepicker
           background={theme.datepickerBackground}
-          p={theme.datepickerPadding}
+          p={datepickerPadding || theme.datepickerPadding}
           borderRadius={datepickerBorderRadius || theme.datepickerBorderRadius}
           position={theme.datepickerPosition}
           boxShadow={theme.datepickerBoxShadow}
           width={theme.datepickerWidth}
           height={datepickerHeight}
-          zIndex={datepickerZIndex || theme.datepickerZIndex}
+          zIndex={theme.datepickerZIndex}
           rtl={rtl}
           left={datepickerLeft}
           top={datepickerTop}
@@ -328,7 +330,7 @@ function Datepicker(
               display={theme.datepickerCloseWrapperDisplay}
               justifyContent={theme.datepickerCloseWrapperJustifyContent}
               position={theme.datepickerCloseWrapperPosition}
-              right={theme.datepickerCloseWrapperRight}
+              right={datepickerCloseWrapperRight || theme.datepickerCloseWrapperRight}
               top={theme.datepickerCloseWrapperTop}
               left={theme.datepickerCloseWrapperLeft}
               bottom={theme.datepickerCloseWrapperBottom}
