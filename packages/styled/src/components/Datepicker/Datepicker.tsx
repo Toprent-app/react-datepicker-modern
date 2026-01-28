@@ -153,6 +153,7 @@ export interface DatepickerProps extends UseDatepickerProps {
   datepickerHeight?: string
   datepickerLeft?: string
   datepickerTop?: string
+  datepickerZIndex?: number | null
 }
 
 function Datepicker(
@@ -188,6 +189,7 @@ function Datepicker(
     datepickerHeight = 'unset',
     datepickerLeft = '0px',
     datepickerTop = '0px',
+    datepickerZIndex = null,
   }: DatepickerProps,
   ref?: React.Ref<unknown>,
 ) {
@@ -315,7 +317,7 @@ function Datepicker(
           boxShadow={theme.datepickerBoxShadow}
           width={theme.datepickerWidth}
           height={datepickerHeight}
-          zIndex={theme.datepickerZIndex}
+          zIndex={datepickerZIndex || theme.datepickerZIndex}
           rtl={rtl}
           left={datepickerLeft}
           top={datepickerTop}
