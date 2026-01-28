@@ -115,6 +115,8 @@ export interface DateRangeInputModernProps extends UseDatepickerProps {
   datepickerLeftCustom?: string
   datepickerTopCustom?: string
   datepickerZIndexCustom?: number | null
+  datepickerPaddingCustom?: string | null
+  datepickerCloseWrapperRightCustom?: string | null
 }
 
 function DateRangeInputModern({
@@ -157,7 +159,8 @@ function DateRangeInputModern({
   datepickerHeightCustom,
   datepickerLeftCustom,
   datepickerTopCustom,
-  datepickerZIndexCustom,
+  datepickerPaddingCustom,
+  datepickerCloseWrapperRightCustom,
 }: DateRangeInputModernProps) {
   const ref = useRef(null)
   const datepickerWrapperRef = useRef<HTMLDivElement>(null)
@@ -306,7 +309,8 @@ function DateRangeInputModern({
               datepickerBorderRadius={datepickerBorderRadiusCustom}
               datepickerWidth={datepickerWidthCustom}
               datepickerHeight={datepickerHeightCustom}
-              datepickerZIndex={datepickerZIndexCustom}
+              datepickerPadding={datepickerPaddingCustom}
+              datepickerCloseWrapperRight={datepickerCloseWrapperRightCustom}
             />
           )}
         </Box>
