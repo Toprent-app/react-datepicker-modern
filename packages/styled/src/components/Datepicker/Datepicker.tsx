@@ -73,6 +73,9 @@ interface StyledDatepicker
     ZIndexProps,
     BoxShadowProps {
   rtl: boolean
+  height: string
+  left: string
+  top: string
 }
 const composeStyledDatepickerStyles = compose(
   background,
@@ -85,7 +88,10 @@ const composeStyledDatepickerStyles = compose(
 )
 
 const StyledDatepicker = styled('div')<StyledDatepicker>`
-  ${composeStyledDatepickerStyles}
+  ${composeStyledDatepickerStyles};
+  height: ${({height}) => height || 'unset'};
+  left: ${({left}) => left || 'unset'};
+  top: ${({top}) => top || 'unset'};
   ${({rtl}) =>
     rtl &&
     css`
@@ -141,6 +147,12 @@ export interface DatepickerProps extends UseDatepickerProps {
   monthLabelFormat?(date: Date): string
   onDayRender?(date: Date): React.ReactNode
   unavailableDates?: Date[]
+  datepickerSelectDateGridTemplateColumns?: string
+  datepickerWidth?: string
+  datepickerBorderRadius?: string
+  datepickerHeight?: string
+  datepickerLeft?: string
+  datepickerTop?: string
 }
 
 function Datepicker(
@@ -170,6 +182,12 @@ function Datepicker(
     displayFormat = 'MM/dd/yyyy',
     phrases = datepickerPhrases,
     unavailableDates = [],
+    datepickerSelectDateGridTemplateColumns = '',
+    datepickerWidth = '',
+    datepickerBorderRadius = '',
+    datepickerHeight = 'unset',
+    datepickerLeft = '0px',
+    datepickerTop = '0px',
   }: DatepickerProps,
   ref?: React.Ref<unknown>,
 ) {
@@ -214,11 +232,11 @@ function Datepicker(
   const themeContext = useContext(ThemeContext)
   const theme: DatepickerTheme = useThemeProps({
     datepickerZIndex: null,
-    datepickerBackground: '#ffffff',
+    datepickerBackground: '#ffffff !important',
     datepickerPadding: vertical ? '16px 16px 0' : '32px',
     datepickerBorderRadius: '2px',
     datepickerPosition: 'relative',
-    datepickerWidth: 'fit-content',
+    datepickerWidth: datepickerWidth || 'fit-content',
     datepickerCloseWrapperPosition: vertical ? 'relative' : 'absolute',
     datepickerCloseWrapperDisplay: vertical ? 'flex' : 'block',
     datepickerCloseWrapperJustifyContent: vertical ? 'flex-end' : 'initial',
@@ -292,12 +310,15 @@ function Datepicker(
         <StyledDatepicker
           background={theme.datepickerBackground}
           p={theme.datepickerPadding}
-          borderRadius={theme.datepickerBorderRadius}
+          borderRadius={datepickerBorderRadius || theme.datepickerBorderRadius}
           position={theme.datepickerPosition}
           boxShadow={theme.datepickerBoxShadow}
           width={theme.datepickerWidth}
+          height={datepickerHeight}
           zIndex={theme.datepickerZIndex}
           rtl={rtl}
+          left={datepickerLeft}
+          top={datepickerTop}
         >
           {showClose && (
             <CloseWrapper
@@ -319,7 +340,10 @@ function Datepicker(
             <DateWrapper>
               <Grid
                 data-testid="SelectedDatesGrid"
-                gridTemplateColumns={theme.datepickerSelectDateGridTemplateColumns}
+                gridTemplateColumns={
+                  datepickerSelectDateGridTemplateColumns ||
+                  theme.datepickerSelectDateGridTemplateColumns
+                }
                 gridTemplateRows={theme.datepickerSelectDateGridTemplateRows}
               >
                 <SelectedDate

@@ -108,6 +108,12 @@ export interface DateRangeInputModernProps extends UseDatepickerProps {
   initialVisibleMonth?: Date
   startDateLabel?: string
   endDateLabel?: string
+  datepickerSelectDateGridTemplateColumns?: string
+  datepickerBorderRadiusCustom?: string
+  datepickerWidthCustom?: string
+  datepickerHeightCustom?: string
+  datepickerLeftCustom?: string
+  datepickerTopCustom?: string
 }
 
 function DateRangeInputModern({
@@ -144,6 +150,12 @@ function DateRangeInputModern({
   unavailableDates = [],
   startDateLabel = 'From',
   endDateLabel = 'To',
+  datepickerSelectDateGridTemplateColumns,
+  datepickerBorderRadiusCustom,
+  datepickerWidthCustom,
+  datepickerHeightCustom,
+  datepickerLeftCustom,
+  datepickerTopCustom,
 }: DateRangeInputModernProps) {
   const ref = useRef(null)
   const datepickerWrapperRef = useRef<HTMLDivElement>(null)
@@ -162,6 +174,9 @@ function DateRangeInputModern({
     dateRangeStartDateInputPadding: vertical ? (rtl ? '0 32px 0 8px' : '0 8px 0 32px') : '0 0x',
     dateRangeEndDateInputPadding: vertical ? (rtl ? '0 32px 0 8px' : '0 8px 0 32px') : '0 0px',
     dateRangeDatepickerWrapperPosition: 'absolute',
+    datepickerHeight: 'unset',
+    datepickerLeft: '0px',
+    datepickerTop: '0px',
     ...getPlacement(placement, rtl),
   })
 
@@ -253,8 +268,8 @@ function DateRangeInputModern({
         <Box
           position={theme.dateRangeDatepickerWrapperPosition}
           bottom={theme.dateRangeDatepickerWrapperBottom}
-          left={theme.dateRangeDatepickerWrapperLeft}
-          top={theme.dateRangeDatepickerWrapperTop}
+          left={datepickerLeftCustom || theme.dateRangeDatepickerWrapperLeft}
+          top={datepickerTopCustom || theme.dateRangeDatepickerWrapperTop}
           right={theme.dateRangeDatepickerWrapperRight}
         >
           {focusedInput !== null && (
@@ -285,6 +300,10 @@ function DateRangeInputModern({
               unavailableDates={unavailableDates}
               ref={ref}
               initialVisibleMonth={initialVisibleMonth}
+              datepickerSelectDateGridTemplateColumns={datepickerSelectDateGridTemplateColumns}
+              datepickerBorderRadius={datepickerBorderRadiusCustom}
+              datepickerWidth={datepickerWidthCustom}
+              datepickerHeight={datepickerHeightCustom}
             />
           )}
         </Box>
